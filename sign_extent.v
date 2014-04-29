@@ -23,10 +23,9 @@ module sign_extent(sign_immediate,out
 	input signed [23:0] sign_immediate;
 	output [31:0] out;
 	
-	wire signed [25:0] sign_immediate_mul4;
-	
-	assign sign_immediate_mul4 = sign_immediate*4;
-	
-	assign out = sign_immediate_mul4[25]? ( {6'b111111,sign_immediate_mul4}):({6'b000000,sign_immediate_mul4} );
+	wire [31:0] sign_extend_immediate ;
 
+	assign sign_extend_immediate = sign_immediate[23]? ( {8'b11111111,sign_immediate} ):( {8'b00000000,sign_immediate} );
+	assign out = sign_extend_immediate << 2 ;
+	
 endmodule
