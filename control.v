@@ -110,13 +110,13 @@ module control(opfunc, nzcv,
 								condition=1'b0;
 					  end
 			4'b1010:begin
-							if( z == v )
+							if( n == v )
 								condition=1'b1;
 							else
 								condition=1'b0;
 					  end
 			4'b1011:begin
-							if( z != v )
+							if( n != v )
 								condition=1'b1;
 							else
 								condition=1'b0;
@@ -179,7 +179,7 @@ module control(opfunc, nzcv,
 													alu_op = 4'b0100;
 												 else
 													alu_op = 4'b0010;
-												 if( opfunc[5] == 1'b0 )
+												 if( opfunc[5] == 1'b1 )
 													alu_src = 2'b10;
 												 else
 													alu_src = 2'b11;
